@@ -3,10 +3,10 @@ const db_name = "dacar";
 let knex = require("knex")({
   client: "pg",
   connection: {
-    host: "149.165.153.37",
-    port: "5432",
+    host: "LOCAL HOST",
+    port: "PORT",
     user: "postgres",
-    password: "Pramod_pramod123",
+    password: "PASSWORD",
     charset: "utf8",
   },
 });
@@ -15,10 +15,10 @@ function updateConnection(db_name) {
   knex = require("knex")({
     client: "pg",
     connection: {
-      host: "149.165.153.37",
-      port: "5432",
+      host: "HOST",
+      port: "PORT",
       user: "postgres",
-      password: "Pramod_pramod123",
+      password: "PASSWORD",
       charset: "utf8",
       database: db_name,
     },
