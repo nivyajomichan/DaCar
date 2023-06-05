@@ -5,4 +5,4 @@ The dataset used for this project is the Kaggle Dataset collected by Aditya Desa
 
 The Web App lets you records the user’s prediction history and stores it in the database, predict the value of a car under various constraints or to change the user’s previous selection, users will be able to update the information form they submitted, delete their search history after logging into their accounts, and read functionalities will be provided for the criteria provided by users to predict the value of a car. Advanced options include Car Price Prediction. 
 
-This project was done as part of the project requirement in the Database Design course.
+This project was done as part of the project requirement in the Applied Database Technologies course.
