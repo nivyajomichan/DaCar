@@ -27,7 +27,7 @@ console.log(`REDIS -- ${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`);
     host: process.env.REDIS_HOST,
     port: process.env.REDIS_PORT,
   });
-  await redisClient.connect();
+  // await redisClient.connect();
   redisClient.on("error", function (err) {
     console.log("Could not establish a connection with redis. " + err);
   });

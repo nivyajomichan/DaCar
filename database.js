@@ -62,7 +62,7 @@ let create_users_string =
 //createTables(create_users_string);
 
 let create_cars_table =
-  "CREATE TABLE public.user_cars ( \
+  "CREATE TABLE public.car_details ( \
     car_id serial4 NOT NULL, \
     model varchar(255) , \
     brand varchar(255) , \
