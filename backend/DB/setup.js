@@ -1,5 +1,6 @@
 const db_name = "epsilon";
-
+const fs = require('fs');
+const util = require('util');
 
 let knex = require("knex")({
  client: "pg",
@@ -110,4 +111,87 @@ let create_user_logs_string =
 // createTables(create_user_logs_string);
 
 
-populateDatabase();
+// populateDatabase();
+
+
+function readCSVandInsertInDb() {
+  const readFileAsync = util.promisify(fs.readFile);
+
+  const filePath = 'backend/DB/cars_file.csv';
+
+  async function readCSVFile() {
+    try {
+      const csvData = await readFileAsync(filePath, 'utf8');
+      const rows = csvData.split('\n').map(row => row.split(','));
+
+      // If the CSV file has headers, you can access them as follows:
+      const headers = rows[0];
+      
+      // If you want to skip the header row, you can start from index 1:
+      // const rowsWithoutHeaders = rows.slice(1);
+
+
+      parseRows(rows);
+
+      // You can perform further operations with the 'rows' array here
+    } catch (error) {
+      console.error('Error occurred while reading the CSV file:', error.message);
+    }
+  }
+  readCSVFile();
+}
+readCSVandInsertInDb();
+
+
+
+async function parseRows(data) {
+  
+  // Extract the headers
+  const headers = data[0];
+  
+  // Remove the header row from the data
+  const rows = data.slice(1);
+  
+  // Initialize an array to store objects
+  const arrayOfObjects = [];
+  
+  // Iterate through the rows
+  for (const row of rows) {
+    const obj = {};
+    // Iterate through the headers and assign values from the current row to the corresponding keys
+    for (let i = 0; i < headers.length; i++) {
+      obj[headers[i]] = row[i];
+    }
+    obj['is_training'] = true;
+    obj['year'] = parseInt(obj['year']);
+    obj['price'] = parseFloat(obj['price']);
+    obj['mileage'] = parseFloat(obj['mileage']);
+    obj['tax'] = parseFloat(obj['tax']);
+    obj['mpg'] = parseFloat(obj['mpg']);
+    obj['engine_size'] = parseFloat(obj['engine_size']);
+    obj['price_quoted'] = parseFloat(obj['price_quoted']);
+    
+    delete obj[''];
+    // Add the object to the array
+    arrayOfObjects.push(obj);
+  }
+  
+  console.log(arrayOfObjects);
+  await chunkArray(arrayOfObjects, 100);
+}
+
+
+async function chunkArray(array, chunkSize) {
+  const chunks = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+    const chunk = array.slice(i, i + chunkSize);
+    chunks.push(chunk);
+  }
+  
+
+  for (let chunk of chunks) {
+    await knex('car_details').insert(chunk);
+  }
+  
+
+}

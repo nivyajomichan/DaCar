@@ -19,6 +19,7 @@
     "content-disposition": "^0.5.3",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
     "dotenv": "^8.2.0",
     "exceljs": "^3.5.0",
     "express": "^4.17.2",
@@ -27,6 +28,7 @@
     "express-session": "1.17.1",
     "fast-csv": "^4.3.6",
     "form-data": "^3.0.1",
+    "fs": "^0.0.1-security",
     "http-status-codes": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
     "kafkajs": "^1.16.0",
@@ -40,7 +42,8 @@
     "redis": "3.0.2",
     "tmp": "^0.2.1",
     "uid": "^2.0.0",
-    "unirest": "^0.6.0"
+    "unirest": "^0.6.0",
+    "util": "^0.12.5"
   },
   "devDependencies": {
     "moment": "^2.24.0",
