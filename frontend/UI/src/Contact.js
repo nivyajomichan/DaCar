@@ -25,11 +25,12 @@ const About = () => {
               Contact the Developers
             </Typography>
 
-            <Typography variant="h5" align="center" color="textPrimary" gutterBottom sx={{ fontStyle: 'Italic', color: "#32093D", marginTop: 2, marginBottom: 2 }}>
-              Chanakya Kenguva <br />
-              ckenguva@iu.edu <br />
-              +1 (812) 803-5537
+            <Typography variant="h5" align="center" color="textPrimary" gutterBottom sx={{ fontStyle: 'Italic', color: "#32093D", marginTop: 2, marginBottom: 4 }}>
+              Nivya Jomichan <br />
+              niv@iu.edu <br />
+              +1 (812) 803-5467
             </Typography>
+
 
             <Typography variant="h5" align="center" color="textPrimary" gutterBottom sx={{ fontStyle: 'Italic', color: "#32093D", marginTop: 2, marginBottom: 2 }}>
               Pramod Bhakta <br />
@@ -37,11 +38,6 @@ const About = () => {
               +1 (812) 391-6233
             </Typography>
 
-            <Typography variant="h5" align="center" color="textPrimary" gutterBottom sx={{ fontStyle: 'Italic', color: "#32093D", marginTop: 2, marginBottom: 4 }}>
-              Nivya Jomichan <br />
-              niv@iu.edu <br />
-              +1 (812) 803-5467
-            </Typography>
 
 
           </Box>
