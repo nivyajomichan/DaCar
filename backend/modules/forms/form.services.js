@@ -118,8 +118,8 @@ async function pythonPrice(body) {
   } catch (err) {
     console.log(err);
     return {
-      success: true,
-      message: "Price range of car should be between $ 4000 and $ 7500",
+      success: false,
+      message: "Price range of car not found",
     };
   }
 }

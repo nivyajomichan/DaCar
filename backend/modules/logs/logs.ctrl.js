@@ -5,9 +5,10 @@ exports.editLogs = editLogs;
 
 async function getLogs(req, res, next) {
   try {
+    const user = req.session.user;
     let data = await logsService.getLogs({
-      id: 1,
-      name: "Pramod",
+      id: user.user_id,
+      name: user.first_name,
     });
     return res.bhejdo(HttpStatus.OK, { success: true, data: data });
   } catch (err) {
