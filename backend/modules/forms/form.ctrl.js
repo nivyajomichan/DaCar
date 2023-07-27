@@ -18,9 +18,10 @@ async function getMasterData(req, res, next) {
 
 async function putNewCarData(req, res, next) {
   try {
+    const user = req.session.user;
     let data = await formService.putNewCarData(req.body, {
-      id: 1,
-      name: "Pramod",
+      id: user.user_id,
+      name: user.first_name,
     });
     return res.bhejdo(HttpStatus.OK, {
       success: true,

@@ -61,12 +61,12 @@ async function putNewCarData(body, user) {
 
     let car_data = create_car_data(body, new_price.message);
     let new_car = await formQueries.newCar(car_data);
-    let log_data = create_log_data(body, user.id, new_car[0].car_id);
+    let log_data = create_log_data(body, user.id, new_car[0].car_id, new_price.message);
     let new_log = await formQueries.newLog(log_data);
     return new_price.message;
   } catch (err) {
     console.log(err);
-    return { success: false };
+    return { sucess: false };
   }
 }
 
@@ -74,24 +74,25 @@ function create_car_data(data, price) {
   let car_data = {
     model: data.model,
     brand: data.brand,
-    year: data.year,
+    year: parseInt(data.year),
     transmission: data.transmission,
-    mileage: data.mileage,
+    mileage: parseFloat(data.mileage),
     fuel_type: data.fuel_type,
-    tax: data.tax,
-    mpg: data.mpg,
-    engine_size: data.engine_size,
-    price_quoted: price,
+    tax: parseFloat(data.tax),
+    mpg: parseFloat(data.mpg),
+    engine_size: parseFloat(data.engine_size),
+    price_quoted: parseFloat(price),
     is_training: false,
   };
   return car_data;
 }
 
-function create_log_data(data, user_id, car_id) {
+function create_log_data(data, user_id, car_id, price) {
   let log_obj = {
     user_id: user_id,
     car_id: car_id,
     is_deleted: false,
+    price_details: price
   };
   return log_obj;
 }
@@ -110,15 +111,15 @@ async function pythonPrice(body) {
       engine_size: body.engine_size,
     };
     let response = await axios.post(
-      "http://dacar.pbrmtech.co.in:3001/python/api/predict/",
+      "http://127.0.0.1:8000/python/api/predict/",
       req_body
     );
     return response.data;
   } catch (err) {
     console.log(err);
     return {
-      success: true,
-      message: "Price range of car should be between $ 4000 and $ 7500",
+      success: false,
+      message: "Price range of car not found",
     };
   }
 }

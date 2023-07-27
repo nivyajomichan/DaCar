@@ -18,7 +18,7 @@ exports.getModels = function () {
 };
 
 exports.newCar = function (car_obj) {
-  return db.from("user_cars").insert(car_obj).returning("car_id");
+  return db.from("car_details").insert(car_obj).returning("car_id");
 };
 
 exports.newLog = function (log_obj) {

@@ -27,7 +27,7 @@ console.log(`REDIS -- ${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`);
     host: process.env.REDIS_HOST,
     port: process.env.REDIS_PORT,
   });
-  await redisClient.connect();
+  // await redisClient.connect();
   redisClient.on("error", function (err) {
     console.log("Could not establish a connection with redis. " + err);
   });
@@ -165,7 +165,7 @@ app.use("*", (req, res, next) => {
       process.env.SERVER_SETUP === "staging")
   ) {
     const msg =
-      "<h1>SECURITY ALERT!!</h1><p>Looks like you are using the erp from an unauthorized website. Please follow the steps below.</p><ol><li>Type erp.leadschool.in in your browser.</li><li>Immediately change your password.</li><li>Report this at excellence@leadschool.in immediately</li></ol><h1>SECURITY ALERT!!</h1>";
+      "<h1>SECURITY ALERT!!</h1>";
     log.warn({
       warning: msg,
       referer: req.headers.referer,
